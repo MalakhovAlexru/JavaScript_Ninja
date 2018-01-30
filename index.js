@@ -96,7 +96,11 @@ function restart() {
   del = document.getElementsByClassName("won-message");
   del[0].innerHTML = "";
 
-  intervalID = setInterval(endOfGame, 500);
+  intervalID = setInterval(endOfGame, 250);
+
+  undoBtn[0].addEventListener("click", undo, false);
+restarBtn[0].addEventListener("click", restart, false);
+redoBtn[0].addEventListener("click", redo, false);
 }
 
 function test(text) {
@@ -112,7 +116,7 @@ function test(text) {
   console.log(buf);
 }
 
-intervalID = setInterval(endOfGame, 500);
+intervalID = setInterval(endOfGame, 250);
 
 function endOfGame() {
   //first line
@@ -124,7 +128,7 @@ function endOfGame() {
     if (getEl[1].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[0].getAttribute("class");
-    buff = buff + " won horizontal";
+    buff = buff + " win horizontal";
     getEl[0].setAttribute("class", buff);
     getEl[1].setAttribute("class", buff);
     getEl[2].setAttribute("class", buff);
@@ -141,7 +145,7 @@ function endOfGame() {
     if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[3].getAttribute("class");
-    buff = buff + " won horizontal";
+    buff = buff + " win horizontal";
     getEl[3].setAttribute("class", buff);
     getEl[4].setAttribute("class", buff);
     getEl[5].setAttribute("class", buff);
@@ -157,7 +161,7 @@ function endOfGame() {
     if (getEl[7].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[6].getAttribute("class");
-    buff = buff + " won horizontal";
+    buff = buff + " win horizontal";
     getEl[6].setAttribute("class", buff);
     getEl[7].setAttribute("class", buff);
     getEl[8].setAttribute("class", buff);
@@ -174,7 +178,7 @@ function endOfGame() {
     if (getEl[3].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[0].getAttribute("class");
-    buff = buff + " won vertical";
+    buff = buff + " win vertical";
     getEl[0].setAttribute("class", buff);
     getEl[3].setAttribute("class", buff);
     getEl[6].setAttribute("class", buff);
@@ -190,7 +194,7 @@ function endOfGame() {
     if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[1].getAttribute("class");
-    buff = buff + " won vertical";
+    buff = buff + " win vertical";
     getEl[1].setAttribute("class", buff);
     getEl[4].setAttribute("class", buff);
     getEl[7].setAttribute("class", buff);
@@ -206,7 +210,7 @@ function endOfGame() {
     if (getEl[5].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[2].getAttribute("class");
-    buff = buff + " won vertical";
+    buff = buff + " win vertical";
     getEl[2].setAttribute("class", buff);
     getEl[5].setAttribute("class", buff);
     getEl[8].setAttribute("class", buff);
@@ -222,7 +226,7 @@ function endOfGame() {
     if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[4].getAttribute("class");
-    buff = buff + " won diagonal-right";
+    buff = buff + " win diagonal-right";
     getEl[6].setAttribute("class", buff);
     getEl[4].setAttribute("class", buff);
     getEl[2].setAttribute("class", buff);
@@ -238,7 +242,7 @@ function endOfGame() {
     if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[4].getAttribute("class");
-    buff = buff + " won diagonal-left";
+    buff = buff + " win diagonal-left";
 
     getEl[0].setAttribute("class", buff);
     getEl[4].setAttribute("class", buff);
