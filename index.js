@@ -1,120 +1,265 @@
-// var a = 'c-1';
-
-// a.onclick = function() { 
-//     alert( 'hello' ); 
-//   };
-
-    let getEl = document.getElementsByClassName('cell');
-    let y = 1;
-    let getElId, getBtn = document.getElementsByClassName('btn');
-    let array = [], undoArray = {}, redoArray = [];
-
-
-    let undoBtn = document.getElementsByClassName('undo-btn btn');
-    let restarBtn = document.getElementsByClassName('restart-btn');
-    let redoBtn = document.getElementsByClassName('redo-btn btn');
-
-    undoBtn[0].addEventListener("click", undo, false);
-    restarBtn[0].addEventListener("click", restart, false);
-    redoBtn[0].addEventListener("click", redo, false);
-
-
-    for (let i =0 ; i<getEl.length ; i++){
-
-        getEl[i].addEventListener("click", cellClicked, false);
-            
-    }
-    setInterval(checkUdo,100);
-    setInterval(checkRedo,100);
-
-    console.log(undoBtn);
-    function cellClicked() {
-        checkUdo();
-        checkRedo();
-        if (y%2){
-            
-            this.setAttribute('class', `cell ch`);
-            array.push(this.id)
-            console.log(y);
-            
-    } else {
-    
-        this.setAttribute('class', `cell r`);
-        console.log(y);
-        array.push(this.id)
-        }
-        y++;
-        checkUdo();
-        checkRedo();
-
-    }
-
-function checkUdo(){
-if(array.length > 0){
-    undoBtn[0].disabled = false;
-           
-}
-else{
-    undoBtn[0].disabled = true;
-}
-}
-
-function checkRedo(){
-    if(redoArray.length != 0){
-        redoBtn[0].disabled = false;
-     } else {
-        redoBtn[0].disabled = true;
-    }
-}
-
-function undo(){
-    let a = array.slice(-1);
-    redoArray[0] = a.toString();
-    getElId = document.getElementById(a);
-    redoArray[1] = getElId.getAttribute('class');
-    getElId.setAttribute('class', `cell`);
-    array = array.slice(0,-1);
-   console.log (redoArray);
-};
-
-function redo(){
-    // console.log (redoArray);
-    let a = redoArray[0];
-    getElId = document.getElementById(a);
-    array.push(a);
-    a = redoArray[1];                
-    getElId.setAttribute('class', a);
-    
+let getEl = document.getElementsByClassName("cell");
+let y = 1;
+let getElId;
+let array = [],
     redoArray = [];
 
-};
+let undoBtn = document.getElementsByClassName("undo-btn btn");
+let restarBtn = document.getElementsByClassName("restart-btn");
+let redoBtn = document.getElementsByClassName("redo-btn btn");
 
-function restart(){
-    console.log ('restart works');
-                      
+let intervalID = 0;
 
-};
+undoBtn[0].addEventListener("click", undo, false);
+restarBtn[0].addEventListener("click", restart, false);
+redoBtn[0].addEventListener("click", redo, false);
 
-function endOfGame(){
-    let rowWins = 0;
-    let colWins = 0;
-    let rldiag = 0;
-    let lrdiag = 0;
+for (let i = 0; i < getEl.length; i++) {
+  getEl[i].addEventListener("click", cellClicked, false);
+}
+setInterval(checkUdo, 100);
+setInterval(checkRedo, 100);
 
-    for (let i = 0 ; i<getEl.length ; i++){
-        let etalon = getEl[i].getAttribute('class');
-        let buf = getEl[i].getAttribute('class');   
-    }
-    if (buf == etalon){
-        rowWins++;
-        if (rowWins == 3){
-            console.log('game over!');
-            getElId = document.getElementsByClassName('won-title hidden');
-            getElId.setAttribute('class', `won-title`);
-            getElId = document.getElementsByClassName('won-message');
-            getElId.appendChild('Hello');
+console.log(undoBtn);
+function cellClicked() {
+  checkUdo();
+  checkRedo();
+  if (y % 2) {
+    this.setAttribute("class", `cell ch`);
+    array.push(this.id);
+    console.log(y);
+  } else {
+    this.setAttribute("class", `cell r`);
+    console.log(y);
+    array.push(this.id);
+  }
+  y++;
+  checkUdo();
+  checkRedo();
+}
 
-            // .appendChild(http.responseXML);
-        }
-    }
+function checkUdo() {
+  if (array.length > 0) {
+    undoBtn[0].disabled = false;
+  } else {
+    undoBtn[0].disabled = true;
+  }
+}
+
+function checkRedo() {
+  if (redoArray.length != 0) {
+    redoBtn[0].disabled = false;
+  } else {
+    redoBtn[0].disabled = true;
+  }
+}
+
+function undo() {
+  let a = array.slice(-1);
+  redoArray[0] = a.toString();
+  getElId = document.getElementById(a);
+  redoArray[1] = getElId.getAttribute("class");
+  getElId.setAttribute("class", `cell`);
+  array = array.slice(0, -1);
+  console.log(redoArray);
+  y--;
+}
+
+function redo() {
+  let a = redoArray[0];
+  getElId = document.getElementById(a);
+  array.push(a);
+  a = redoArray[1];
+  getElId.setAttribute("class", a);
+
+  redoArray = [];
+  y--;
+}
+
+function restart() {
+  console.log("restart works");
+  for (let i = 0; i < getEl.length; i++) {
+    let del;
+    del = document.getElementById("c-" + i);
+    del.setAttribute("class", "cell");
+  }
+  array = [];
+  redoArray = [];
+  y = 1;
+
+  let del;
+  del = document.body.getElementsByClassName("won-title");
+
+  // console.log(buf);
+
+  del[0].setAttribute("class", "won-title hidden");
+  del = document.getElementsByClassName("won-message");
+  del[0].innerHTML = "";
+
+  intervalID = setInterval(endOfGame, 500);
+}
+
+function test(text) {
+  let buf;
+  buf = document.body.getElementsByClassName("won-title hidden");
+
+  console.log(buf);
+
+  buf[0].setAttribute("class", "won-title");
+  buf = document.getElementsByClassName("won-message");
+  buf[0].innerHTML = text;
+
+  console.log(buf);
+}
+
+intervalID = setInterval(endOfGame, 500);
+
+function endOfGame() {
+  //first line
+  if (
+    getEl[0].getAttribute("class") == getEl[1].getAttribute("class") &&
+    getEl[1].getAttribute("class") == getEl[2].getAttribute("class") &&
+    getEl[1].getAttribute("class") !== "cell"
+  ) {
+    if (getEl[1].getAttribute("class") == `cell ch`) test("Crosses won!");
+    else test("Toes won!");
+    let buff = getEl[0].getAttribute("class");
+    buff = buff + " won horizontal";
+    getEl[0].setAttribute("class", buff);
+    getEl[1].setAttribute("class", buff);
+    getEl[2].setAttribute("class", buff);
+
+    clearInterval(intervalID);
+    return;
+  }
+  //second line
+  if (
+    getEl[3].getAttribute("class") == getEl[4].getAttribute("class") &&
+    getEl[4].getAttribute("class") == getEl[5].getAttribute("class") &&
+    getEl[4].getAttribute("class") !== "cell"
+  ) {
+    if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
+    else test("Toes won!");
+    let buff = getEl[3].getAttribute("class");
+    buff = buff + " won horizontal";
+    getEl[3].setAttribute("class", buff);
+    getEl[4].setAttribute("class", buff);
+    getEl[5].setAttribute("class", buff);
+    clearInterval(intervalID);
+    return;
+  }
+  //third line
+  if (
+    getEl[6].getAttribute("class") == getEl[7].getAttribute("class") &&
+    getEl[7].getAttribute("class") == getEl[8].getAttribute("class") &&
+    getEl[7].getAttribute("class") !== "cell"
+  ) {
+    if (getEl[7].getAttribute("class") == `cell ch`) test("Crosses won!");
+    else test("Toes won!");
+    let buff = getEl[6].getAttribute("class");
+    buff = buff + " won horizontal";
+    getEl[6].setAttribute("class", buff);
+    getEl[7].setAttribute("class", buff);
+    getEl[8].setAttribute("class", buff);
+    clearInterval(intervalID);
+    return;
+  }
+  //cols
+  //col one
+  if (
+    getEl[0].getAttribute("class") == getEl[3].getAttribute("class") &&
+    getEl[3].getAttribute("class") == getEl[6].getAttribute("class") &&
+    getEl[3].getAttribute("class") !== "cell"
+  ) {
+    if (getEl[3].getAttribute("class") == `cell ch`) test("Crosses won!");
+    else test("Toes won!");
+    let buff = getEl[0].getAttribute("class");
+    buff = buff + " won vertical";
+    getEl[0].setAttribute("class", buff);
+    getEl[3].setAttribute("class", buff);
+    getEl[6].setAttribute("class", buff);
+    clearInterval(intervalID);
+    return;
+  }
+  //col two
+  if (
+    getEl[1].getAttribute("class") == getEl[4].getAttribute("class") &&
+    getEl[4].getAttribute("class") == getEl[7].getAttribute("class") &&
+    getEl[4].getAttribute("class") !== "cell"
+  ) {
+    if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
+    else test("Toes won!");
+    let buff = getEl[1].getAttribute("class");
+    buff = buff + " won vertical";
+    getEl[1].setAttribute("class", buff);
+    getEl[4].setAttribute("class", buff);
+    getEl[7].setAttribute("class", buff);
+    clearInterval(intervalID);
+    return;
+  }
+  //col tree
+  if (
+    getEl[2].getAttribute("class") == getEl[5].getAttribute("class") &&
+    getEl[5].getAttribute("class") == getEl[8].getAttribute("class") &&
+    getEl[5].getAttribute("class") !== "cell"
+  ) {
+    if (getEl[5].getAttribute("class") == `cell ch`) test("Crosses won!");
+    else test("Toes won!");
+    let buff = getEl[2].getAttribute("class");
+    buff = buff + " won vertical";
+    getEl[2].setAttribute("class", buff);
+    getEl[5].setAttribute("class", buff);
+    getEl[8].setAttribute("class", buff);
+    clearInterval(intervalID);
+    return;
+  }
+  //diam l-r
+  if (
+    getEl[6].getAttribute("class") == getEl[4].getAttribute("class") &&
+    getEl[4].getAttribute("class") == getEl[2].getAttribute("class") &&
+    getEl[4].getAttribute("class") !== "cell"
+  ) {
+    if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
+    else test("Toes won!");
+    let buff = getEl[4].getAttribute("class");
+    buff = buff + " won diagonal-right";
+    getEl[6].setAttribute("class", buff);
+    getEl[4].setAttribute("class", buff);
+    getEl[2].setAttribute("class", buff);
+    clearInterval(intervalID);
+    return;
+  }
+  //diam r-l
+  if (
+    getEl[0].getAttribute("class") == getEl[4].getAttribute("class") &&
+    getEl[4].getAttribute("class") == getEl[8].getAttribute("class") &&
+    getEl[4].getAttribute("class") !== "cell"
+  ) {
+    if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
+    else test("Toes won!");
+    let buff = getEl[4].getAttribute("class");
+    buff = buff + " won diagonal-left";
+
+    getEl[0].setAttribute("class", buff);
+    getEl[4].setAttribute("class", buff);
+    getEl[8].setAttribute("class", buff);
+
+    clearInterval(intervalID);
+    return;
+  } else if (
+    getEl[0].getAttribute("class") !== "cell" &&
+    getEl[1].getAttribute("class") !== "cell" &&
+    getEl[2].getAttribute("class") !== "cell" &&
+    getEl[3].getAttribute("class") !== "cell" &&
+    getEl[4].getAttribute("class") !== "cell" &&
+    getEl[5].getAttribute("class") !== "cell" &&
+    getEl[6].getAttribute("class") !== "cell" &&
+    getEl[7].getAttribute("class") !== "cell" &&
+    getEl[8].getAttribute("class") !== "cell"
+  ) {
+    //draw!
+    test("'It's a draw!'");
+    clearInterval(intervalID);
+    return;
+  }
 }
