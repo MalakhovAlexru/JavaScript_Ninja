@@ -40,9 +40,12 @@ function cellClicked() {
 
 function checkUdo() {
   if (array.length > 0) {
-    undoBtn[0].disabled = false;
+    // undoBtn[0].disabled = false;
+    undoBtn[0].removeAttribute('disabled');
   } else {
-    undoBtn[0].disabled = true;
+    // undoBtn[0].disabled = true;
+    undoBtn[0].setAttribute('disabled', 'true');
+    
   }
 }
 
@@ -119,6 +122,14 @@ function test(text) {
   console.log(buf);
 }
 
+
+function removList(){
+    for (let i = 0; i < getEl.length; i++) {
+        getEl[i].removeEventListener("click", cellClicked, false);
+      }
+   
+};
+
 intervalID = setInterval(endOfGame, 250);
 
 function endOfGame() {
@@ -128,6 +139,7 @@ function endOfGame() {
     getEl[1].getAttribute("class") == getEl[2].getAttribute("class") &&
     getEl[1].getAttribute("class") !== "cell"
   ) {
+    removList()
     if (getEl[1].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[0].getAttribute("class");
@@ -145,6 +157,7 @@ function endOfGame() {
     getEl[4].getAttribute("class") == getEl[5].getAttribute("class") &&
     getEl[4].getAttribute("class") !== "cell"
   ) {
+    removList()
     if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[3].getAttribute("class");
@@ -161,6 +174,7 @@ function endOfGame() {
     getEl[7].getAttribute("class") == getEl[8].getAttribute("class") &&
     getEl[7].getAttribute("class") !== "cell"
   ) {
+    removList()
     if (getEl[7].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[6].getAttribute("class");
@@ -178,6 +192,7 @@ function endOfGame() {
     getEl[3].getAttribute("class") == getEl[6].getAttribute("class") &&
     getEl[3].getAttribute("class") !== "cell"
   ) {
+    removList()
     if (getEl[3].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[0].getAttribute("class");
@@ -194,6 +209,7 @@ function endOfGame() {
     getEl[4].getAttribute("class") == getEl[7].getAttribute("class") &&
     getEl[4].getAttribute("class") !== "cell"
   ) {
+    removList()
     if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[1].getAttribute("class");
@@ -210,6 +226,7 @@ function endOfGame() {
     getEl[5].getAttribute("class") == getEl[8].getAttribute("class") &&
     getEl[5].getAttribute("class") !== "cell"
   ) {
+    removList()
     if (getEl[5].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[2].getAttribute("class");
@@ -226,6 +243,7 @@ function endOfGame() {
     getEl[4].getAttribute("class") == getEl[2].getAttribute("class") &&
     getEl[4].getAttribute("class") !== "cell"
   ) {
+    removList()
     if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[4].getAttribute("class");
@@ -242,6 +260,7 @@ function endOfGame() {
     getEl[4].getAttribute("class") == getEl[8].getAttribute("class") &&
     getEl[4].getAttribute("class") !== "cell"
   ) {
+    removList()
     if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[4].getAttribute("class");
@@ -264,6 +283,7 @@ function endOfGame() {
     getEl[7].getAttribute("class") !== "cell" &&
     getEl[8].getAttribute("class") !== "cell"
   ) {
+    removList()
     //draw!
     test("'It's a draw!'");
     clearInterval(intervalID);
