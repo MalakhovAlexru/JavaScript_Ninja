@@ -89,8 +89,7 @@ function restart() {
   redoArray = [];
   y = 1;
   
-  checkUdo();
-  checkRedo();
+  
 
   let del;
   del = document.body.getElementsByClassName("won-title");
@@ -110,6 +109,8 @@ function restart() {
   undoBtn[0].addEventListener("click", undo, false);
   redoBtn[0].addEventListener("click", redo, false);
 
+  checkUdo();
+  checkRedo();
 
 }
 
@@ -157,6 +158,8 @@ function removList(){
     for (let i = 0; i < getEl.length; i++) {
         getEl[i].removeEventListener("click", cellClicked, false);
       }
+      checkUdo();
+      checkRedo();
       undoBtn[0].removeEventListener("click", undo, false);
       redoBtn[0].removeEventListener("click", redo, false);
    
