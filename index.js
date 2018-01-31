@@ -38,22 +38,12 @@ function cellClicked() {
   // checkRedo();
 }
 
-function checkUdo() {
-  if (array.length > 0) {
-    // undoBtn[0].disabled = false;
-    undoBtn[0].removeAttribute('disabled');
-  }
-   else {
-    undoBtn[0].disabled = true;
-    // undoBtn[0].setAttribute('disabled', 'true');
-    
-  }
-}
 
 
 
 function undo() {
   checkRedo();
+  checkUdo();
   let a = array.slice(-1);
   redoArray[0] = a.toString();
   getElId = document.getElementById(a);
@@ -113,6 +103,18 @@ function restart() {
   
 }
 
+
+function checkUdo() {
+  if (array.length > 0) {
+    // undoBtn[0].disabled = false;
+    undoBtn[0].removeAttribute('disabled');
+  }
+   else {
+    undoBtn[0].disabled = true;
+    // undoBtn[0].setAttribute('disabled', 'true');
+    
+  }
+}
 
 function checkRedo() {
   // redoBtn[0].removeAttribute('disabled');
