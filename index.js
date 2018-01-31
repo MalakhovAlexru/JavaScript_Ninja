@@ -25,11 +25,11 @@ function cellClicked() {
   checkUdo();
   checkRedo();
   if (y % 2) {
-    this.setAttribute("class", `cell ch b`);
+    this.setAttribute("class", `cell ch`);
     array.push(this.id);
     console.log(y);
   } else {
-    this.setAttribute("class", `cell r b`);
+    this.setAttribute("class", `cell r`);
     console.log(y);
     array.push(this.id);
   }
@@ -69,7 +69,7 @@ function undo() {
   redoArray[0] = a.toString();
   getElId = document.getElementById(a);
   redoArray[1] = getElId.getAttribute("class");
-  getElId.setAttribute("class", `cell b`);
+  getElId.setAttribute("class", `cell`);
   array = array.slice(0, -1);
   checkUdo();
   checkRedo();
@@ -82,12 +82,14 @@ function redo() {
   let a = redoArray[0];
   getElId = document.getElementById(a);
   array.push(a);
-  a = redoArray[1]+' b';
+  a = redoArray[1];
   getElId.setAttribute("class", a);
 
   redoArray = [];
   y--;
   checkUdo();
+  checkRedo();
+  
   
 }
 
@@ -96,7 +98,7 @@ function restart() {
   for (let i = 0; i < getEl.length; i++) {
     let del;
     del = document.getElementById("c-" + i);
-    del.setAttribute("class", "cell b");
+    del.setAttribute("class", "cell");
   }
   checkUdo();
   array = [];
@@ -151,7 +153,7 @@ function endOfGame() {
     getEl[1].getAttribute("class") !== "cell"
   ) {
     removList()
-    if (getEl[1].getAttribute("class") == `cell ch b`) test("Crosses won!");
+    if (getEl[1].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[0].getAttribute("class");
     buff = buff + " win horizontal";
@@ -169,7 +171,7 @@ function endOfGame() {
     getEl[4].getAttribute("class") !== "cell"
   ) {
     removList()
-    if (getEl[4].getAttribute("class") == `cell ch b`) test("Crosses won!");
+    if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[3].getAttribute("class");
     buff = buff + " win horizontal";
@@ -186,7 +188,7 @@ function endOfGame() {
     getEl[7].getAttribute("class") !== "cell"
   ) {
     removList()
-    if (getEl[7].getAttribute("class") == `cell ch b`) test("Crosses won!");
+    if (getEl[7].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[6].getAttribute("class");
     buff = buff + " win horizontal";
@@ -204,7 +206,7 @@ function endOfGame() {
     getEl[3].getAttribute("class") !== "cell"
   ) {
     removList()
-    if (getEl[3].getAttribute("class") == `cell ch b`) test("Crosses won!");
+    if (getEl[3].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[0].getAttribute("class");
     buff = buff + " win vertical";
@@ -221,7 +223,7 @@ function endOfGame() {
     getEl[4].getAttribute("class") !== "cell"
   ) {
     removList()
-    if (getEl[4].getAttribute("class") == `cell ch b`) test("Crosses won!");
+    if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[1].getAttribute("class");
     buff = buff + " win vertical";
@@ -238,7 +240,7 @@ function endOfGame() {
     getEl[5].getAttribute("class") !== "cell"
   ) {
     removList()
-    if (getEl[5].getAttribute("class") == `cell ch b`) test("Crosses won!");
+    if (getEl[5].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[2].getAttribute("class");
     buff = buff + " win vertical";
@@ -255,7 +257,7 @@ function endOfGame() {
     getEl[4].getAttribute("class") !== "cell"
   ) {
     removList()
-    if (getEl[4].getAttribute("class") == `cell ch b`) test("Crosses won!");
+    if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[4].getAttribute("class");
     buff = buff + " win diagonal-left";
@@ -272,7 +274,7 @@ function endOfGame() {
     getEl[4].getAttribute("class") !== "cell"
   ) {
     removList()
-    if (getEl[4].getAttribute("class") == `cell ch b`) test("Crosses won!");
+    if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[4].getAttribute("class");
     buff = buff + " win diagonal-right";
