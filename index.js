@@ -95,6 +95,7 @@ function restart() {
     del = document.getElementById("c-" + i);
     del.setAttribute("class", "cell");
   }
+  checkUdo();
   array = [];
   redoArray = [];
   y = 1;
@@ -113,6 +114,7 @@ function restart() {
   for (let i = 0; i < getEl.length; i++) {
     getEl[i].addEventListener("click", cellClicked, false);
   }
+  
 }
 
 function test(text) {
