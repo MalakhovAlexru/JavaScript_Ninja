@@ -17,7 +17,7 @@ redoBtn[0].addEventListener("click", redo, false);
 for (let i = 0; i < getEl.length; i++) {
   getEl[i].addEventListener("click", cellClicked, false);
 }
-// setInterval(checkUdo, 100);
+setInterval(checkUdo, 100);
 // setInterval(checkRedo, 100);
 
 console.log(undoBtn);
@@ -40,14 +40,14 @@ function cellClicked() {
 
 function checkUdo() {
   if (array.length > 0) {
-    undoBtn[0].disabled = false;
-    // undoBtn[0].removeAttribute('disabled');
+    // undoBtn[0].disabled = false;
+    undoBtn[0].removeAttribute('disabled');
   }
-//    else {
-//     // undoBtn[0].disabled = true;
-//     // undoBtn[0].setAttribute('disabled', 'true');
+   else {
+    // undoBtn[0].disabled = true;
+    undoBtn[0].setAttribute('disabled', 'true');
     
-//   }
+  }
 }
 
 function checkRedo() {
