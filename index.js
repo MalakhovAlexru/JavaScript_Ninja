@@ -50,11 +50,12 @@ function checkUdo() {
 }
 
 function checkRedo() {
+    // redoBtn[0].removeAttribute('disabled');
+  if (redoArray.length != 0) {
+    // redoBtn[0].disabled = false;
     redoBtn[0].removeAttribute('disabled');
-//   if (redoArray.length != 0) {
-//     // redoBtn[0].disabled = false;
-//     redoBtn[0].removeAttribute('disabled');
-//   } else {
+  } 
+//   else {
 //     // redoBtn[0].disabled = true;
 //     redoBtn[0].setAttribute('disabled', 'true');
     
@@ -68,13 +69,14 @@ function undo() {
   redoArray[1] = getElId.getAttribute("class");
   getElId.setAttribute("class", `cell`);
   array = array.slice(0, -1);
+  checkRedo();
+ 
   console.log(redoArray);
   y--;
 }
 
 function redo() {
   let a = redoArray[0];
-  checkRedo();
   getElId = document.getElementById(a);
   array.push(a);
   a = redoArray[1];
