@@ -48,9 +48,12 @@ function checkUdo() {
 
 function checkRedo() {
   if (redoArray.length != 0) {
-    redoBtn[0].disabled = false;
+    // redoBtn[0].disabled = false;
+    redoBtn[0].removeAttribute('disabled');
   } else {
-    redoBtn[0].disabled = true;
+    // redoBtn[0].disabled = true;
+    redoBtn[0].setAttribute('disabled');
+    
   }
 }
 
@@ -98,9 +101,9 @@ function restart() {
 
   intervalID = setInterval(endOfGame, 250);
 
-  undoBtn[0].addEventListener("click", undo, false);
-restarBtn[0].addEventListener("click", restart, false);
-redoBtn[0].addEventListener("click", redo, false);
+  for (let i = 0; i < getEl.length; i++) {
+    getEl[i].addEventListener("click", cellClicked, false);
+  }
 }
 
 function test(text) {
@@ -226,7 +229,7 @@ function endOfGame() {
     if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[4].getAttribute("class");
-    buff = buff + " win diagonal-right";
+    buff = buff + " win diagonal-left";
     getEl[6].setAttribute("class", buff);
     getEl[4].setAttribute("class", buff);
     getEl[2].setAttribute("class", buff);
@@ -242,7 +245,7 @@ function endOfGame() {
     if (getEl[4].getAttribute("class") == `cell ch`) test("Crosses won!");
     else test("Toes won!");
     let buff = getEl[4].getAttribute("class");
-    buff = buff + " win diagonal-left";
+    buff = buff + " win diagonal-right";
 
     getEl[0].setAttribute("class", buff);
     getEl[4].setAttribute("class", buff);
