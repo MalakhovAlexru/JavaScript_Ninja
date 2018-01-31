@@ -17,90 +17,66 @@ redoBtn[0].addEventListener("click", redo, false);
 for (let i = 0; i < getEl.length; i++) {
   getEl[i].addEventListener("click", cellClicked, false);
 }
-// setInterval(checkUdo, 100);
-//  setInterval(checkRedo, 10);
-// console.log(undoBtn);
 
 function cellClicked() {
-  // checkUdo();
-  // checkRedo();
+ 
   if (y % 2) {
     this.setAttribute("class", `cell ch`);
     array.push(this.id);
     console.log(y);
     checkUdo();
-  // checkRedo();
+
   } else {
     this.setAttribute("class", `cell r`);
     console.log(y);
     array.push(this.id);
     checkUdo();
-    
-  }
+    }
   y++;
-  // checkUdo();
-  // checkRedo();
-}
-
-
-
+  }
 
 function undo() {
-  // checkRedo();
-  // checkUdo();
   let a = array.slice(-1);
+  redoArray.splice(0,3);
   redoArray[0] = a.toString();
   getElId = document.getElementById(a);
   redoArray[1] = getElId.getAttribute("class");
+  redoArray[2] = y;
   getElId.setAttribute("class", `cell`);
   array = array.slice(0, -1);
   checkUdo();
-  checkRedo();
-  // console.log(redoArray);
+  checkRedo();  
   y--;
 }
 
-function redo() {
-  // checkRedo();
-  
+function redo() { 
   let a = redoArray[0];
   getElId = document.getElementById(a);
   array.push(a);
   a = redoArray[1];
   getElId.setAttribute("class", a);
-  redoArray = [];
-  y--;
+  y = redoArray[2];
+  redoArray.splice(0,3);
   checkUdo();
   checkRedo();
-  
-  
 }
 
 function restart() {
-  // console.log("restart works");
+
   for (let i = 0; i < getEl.length; i++) {
     let del;
     del = document.getElementById("c-" + i);
     del.setAttribute("class", "cell");
   }
-  
-  
-  array = [];
-  redoArray = [];
+  array.splice(0,getEl.length);;
+  redoArray.splice(0,3);;
   y = 1;
-  
-  
-
   let del;
   del = document.body.getElementsByClassName("won-title");
-
-  // console.log(buf);
-
   del[0].setAttribute("class", "won-title hidden");
   del = document.getElementsByClassName("won-message");
   del[0].innerHTML = "";
-
-  intervalID = setInterval(endOfGame, 250);
+  intervalID = setInterval(endOfGame, 50);
 
   for (let i = 0; i < getEl.length; i++) {
     getEl[i].addEventListener("click", cellClicked, false);
@@ -117,44 +93,33 @@ function restart() {
 
 function checkUdo() {
   if (array.length > 0) {
-    // undoBtn[0].disabled = false;
     undoBtn[0].removeAttribute('disabled');
   }
    else {
-    undoBtn[0].disabled = true;
-    // undoBtn[0].setAttribute('disabled', 'true');
-    
+    undoBtn[0].disabled = true;    
   }
 }
 
 function checkRedo() {
-  // redoBtn[0].removeAttribute('disabled');
 if (redoArray.length > 0) {
-  // redoBtn[0].disabled = false;
   redoBtn[0].removeAttribute('disabled');
 } 
 else {
-  redoBtn[0].disabled = true;
-  // redoBtn[0].setAttribute('disabled', 'true');
-  
+  redoBtn[0].disabled = true;  
 }
 }
 
 function test(text) {
   let buf;
   buf = document.body.getElementsByClassName("won-title hidden");
-
-  console.log(buf);
-
   buf[0].setAttribute("class", "won-title");
   buf = document.getElementsByClassName("won-message");
   buf[0].innerHTML = text;
-
-  console.log(buf);
 }
 
-
 function removList(){
+  clearInterval(intervalID);
+  
     for (let i = 0; i < getEl.length; i++) {
         getEl[i].removeEventListener("click", cellClicked, false);
       }
@@ -165,7 +130,7 @@ function removList(){
    
 };
 
-intervalID = setInterval(endOfGame, 250);
+intervalID = setInterval(endOfGame, 50);
 
 function endOfGame() {
   //first line
@@ -183,7 +148,7 @@ function endOfGame() {
     getEl[1].setAttribute("class", buff);
     getEl[2].setAttribute("class", buff);
 
-    clearInterval(intervalID);
+    // clearInterval(intervalID);
     return;
   }
   //second line
@@ -200,7 +165,6 @@ function endOfGame() {
     getEl[3].setAttribute("class", buff);
     getEl[4].setAttribute("class", buff);
     getEl[5].setAttribute("class", buff);
-    clearInterval(intervalID);
     return;
   }
   //third line
@@ -217,7 +181,7 @@ function endOfGame() {
     getEl[6].setAttribute("class", buff);
     getEl[7].setAttribute("class", buff);
     getEl[8].setAttribute("class", buff);
-    clearInterval(intervalID);
+    // clearInterval(intervalID);
     return;
   }
   //cols
@@ -235,7 +199,7 @@ function endOfGame() {
     getEl[0].setAttribute("class", buff);
     getEl[3].setAttribute("class", buff);
     getEl[6].setAttribute("class", buff);
-    clearInterval(intervalID);
+    // clearInterval(intervalID);
     return;
   }
   //col two
@@ -252,7 +216,7 @@ function endOfGame() {
     getEl[1].setAttribute("class", buff);
     getEl[4].setAttribute("class", buff);
     getEl[7].setAttribute("class", buff);
-    clearInterval(intervalID);
+    // clearInterval(intervalID);
     return;
   }
   //col tree
@@ -269,7 +233,7 @@ function endOfGame() {
     getEl[2].setAttribute("class", buff);
     getEl[5].setAttribute("class", buff);
     getEl[8].setAttribute("class", buff);
-    clearInterval(intervalID);
+    // clearInterval(intervalID);
     return;
   }
   //diam l-r
@@ -286,7 +250,7 @@ function endOfGame() {
     getEl[6].setAttribute("class", buff);
     getEl[4].setAttribute("class", buff);
     getEl[2].setAttribute("class", buff);
-    clearInterval(intervalID);
+    // clearInterval(intervalID);
     return;
   }
   //diam r-l
@@ -305,7 +269,7 @@ function endOfGame() {
     getEl[4].setAttribute("class", buff);
     getEl[8].setAttribute("class", buff);
 
-    clearInterval(intervalID);
+    // clearInterval(intervalID);
     return;
   } else if (
     getEl[0].getAttribute("class") !== "cell" &&
@@ -321,7 +285,7 @@ function endOfGame() {
     removList()
     //draw!
     test("'It's a draw!'");
-    clearInterval(intervalID);
+    // clearInterval(intervalID);
     return;
   }
 }
