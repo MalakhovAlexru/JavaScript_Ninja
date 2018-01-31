@@ -52,18 +52,19 @@ function checkUdo() {
 
 function checkRedo() {
     // redoBtn[0].removeAttribute('disabled');
-  if (redoArray.length != 0) {
+  if (redoArray.length > 0) {
     // redoBtn[0].disabled = false;
     redoBtn[0].removeAttribute('disabled');
   } 
-//   else {
-//     // redoBtn[0].disabled = true;
-//     redoBtn[0].setAttribute('disabled', 'true');
+  else {
+    redoBtn[0].disabled = true;
+    // redoBtn[0].setAttribute('disabled', 'true');
     
-//   }
+  }
 }
 
 function undo() {
+  checkRedo();
   let a = array.slice(-1);
   redoArray[0] = a.toString();
   getElId = document.getElementById(a);
