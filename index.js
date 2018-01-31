@@ -69,7 +69,7 @@ function undo() {
   redoArray[0] = a.toString();
   getElId = document.getElementById(a);
   redoArray[1] = getElId.getAttribute("class");
-  getElId.setAttribute("class", `cell`);
+  getElId.setAttribute("class", `cell b`);
   array = array.slice(0, -1);
   checkUdo();
   checkRedo();
@@ -82,7 +82,7 @@ function redo() {
   let a = redoArray[0];
   getElId = document.getElementById(a);
   array.push(a);
-  a = redoArray[1];
+  a = redoArray[1]+' b';
   getElId.setAttribute("class", a);
 
   redoArray = [];
@@ -96,7 +96,7 @@ function restart() {
   for (let i = 0; i < getEl.length; i++) {
     let del;
     del = document.getElementById("c-" + i);
-    del.setAttribute("class", "cell");
+    del.setAttribute("class", "cell b");
   }
   checkUdo();
   array = [];
