@@ -43,11 +43,11 @@ function checkUdo() {
     // undoBtn[0].disabled = false;
     undoBtn[0].removeAttribute('disabled');
   }
-//    else {
+   else {
 //     // undoBtn[0].disabled = true;
-//     // undoBtn[0].setAttribute('disabled', 'true');
+    undoBtn[0].setAttribute('disabled', 'true');
     
-//   }
+  }
 }
 
 function checkRedo() {
