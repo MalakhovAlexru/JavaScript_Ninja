@@ -28,10 +28,14 @@ function cellClicked() {
     this.setAttribute("class", `cell ch`);
     array.push(this.id);
     console.log(y);
+    checkUdo();
+  // checkRedo();
   } else {
     this.setAttribute("class", `cell r`);
     console.log(y);
     array.push(this.id);
+    checkUdo();
+    
   }
   y++;
   // checkUdo();
@@ -42,8 +46,8 @@ function cellClicked() {
 
 
 function undo() {
-  checkRedo();
-  checkUdo();
+  // checkRedo();
+  // checkUdo();
   let a = array.slice(-1);
   redoArray[0] = a.toString();
   getElId = document.getElementById(a);
@@ -57,7 +61,7 @@ function undo() {
 }
 
 function redo() {
-  checkRedo();
+  // checkRedo();
   
   let a = redoArray[0];
   getElId = document.getElementById(a);
@@ -73,18 +77,20 @@ function redo() {
 }
 
 function restart() {
-  console.log("restart works");
+  // console.log("restart works");
   for (let i = 0; i < getEl.length; i++) {
     let del;
     del = document.getElementById("c-" + i);
     del.setAttribute("class", "cell");
   }
-  checkUdo();
-  checkRedo();
+  
   
   array = [];
   redoArray = [];
   y = 1;
+  
+  checkUdo();
+  checkRedo();
 
   let del;
   del = document.body.getElementsByClassName("won-title");
@@ -101,6 +107,10 @@ function restart() {
     getEl[i].addEventListener("click", cellClicked, false);
   }
   
+  undoBtn[0].addEventListener("click", undo, false);
+  redoBtn[0].addEventListener("click", redo, false);
+
+
 }
 
 
@@ -147,6 +157,8 @@ function removList(){
     for (let i = 0; i < getEl.length; i++) {
         getEl[i].removeEventListener("click", cellClicked, false);
       }
+      undoBtn[0].removeEventListener("click", undo, false);
+      redoBtn[0].removeEventListener("click", redo, false);
    
 };
 
