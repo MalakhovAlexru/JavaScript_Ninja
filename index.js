@@ -39,13 +39,13 @@ function cellClicked() {
 }
 
 function checkUdo() {
-  if (array.length >= 0) {
+  if (array.length > 0) {
     // undoBtn[0].disabled = false;
     undoBtn[0].removeAttribute('disabled');
   }
    else {
-    // undoBtn[0].disabled = true;
-    undoBtn[0].setAttribute('disabled', 'true');
+    undoBtn[0].disabled = true;
+    // undoBtn[0].setAttribute('disabled', 'true');
     
   }
 }
