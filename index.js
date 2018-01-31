@@ -52,7 +52,7 @@ function checkRedo() {
     redoBtn[0].removeAttribute('disabled');
   } else {
     // redoBtn[0].disabled = true;
-    redoBtn[0].setAttribute('disabled');
+    redoBtn[0].setAttribute('disabled', 'true');
     
   }
 }
