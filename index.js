@@ -44,8 +44,8 @@ function checkUdo() {
     undoBtn[0].removeAttribute('disabled');
   }
    else {
-    // undoBtn[0].disabled = true;
-    undoBtn[0].setAttribute('disabled', 'true');
+    undoBtn[0].disabled = true;
+    // undoBtn[0].setAttribute('disabled', 'true');
     
   }
 }
