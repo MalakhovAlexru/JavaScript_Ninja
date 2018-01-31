@@ -17,13 +17,13 @@ redoBtn[0].addEventListener("click", redo, false);
 for (let i = 0; i < getEl.length; i++) {
   getEl[i].addEventListener("click", cellClicked, false);
 }
-setInterval(checkUdo, 100);
+// setInterval(checkUdo, 100);
 // setInterval(checkRedo, 100);
 
 console.log(undoBtn);
 function cellClicked() {
   checkUdo();
-//   checkRedo();
+  checkRedo();
   if (y % 2) {
     this.setAttribute("class", `cell ch b`);
     array.push(this.id);
@@ -35,7 +35,7 @@ function cellClicked() {
   }
   y++;
   checkUdo();
-//   checkRedo();
+  checkRedo();
 }
 
 function checkUdo() {
@@ -87,6 +87,8 @@ function redo() {
 
   redoArray = [];
   y--;
+  checkUdo();
+  
 }
 
 function restart() {
