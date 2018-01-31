@@ -40,14 +40,14 @@ function cellClicked() {
 
 function checkUdo() {
   if (array.length > 0) {
-    // undoBtn[0].disabled = false;
-    undoBtn[0].removeAttribute('disabled');
+    undoBtn[0].disabled = false;
+    // undoBtn[0].removeAttribute('disabled');
   }
-   else {
-    undoBtn[0].disabled = true;
-    // undoBtn[0].setAttribute('disabled', 'true');
+//    else {
+//     // undoBtn[0].disabled = true;
+//     // undoBtn[0].setAttribute('disabled', 'true');
     
-  }
+//   }
 }
 
 function checkRedo() {
