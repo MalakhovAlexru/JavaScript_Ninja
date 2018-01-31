@@ -18,12 +18,12 @@ for (let i = 0; i < getEl.length; i++) {
   getEl[i].addEventListener("click", cellClicked, false);
 }
 setInterval(checkUdo, 100);
-setInterval(checkRedo, 100);
+// setInterval(checkRedo, 100);
 
 console.log(undoBtn);
 function cellClicked() {
   checkUdo();
-  checkRedo();
+//   checkRedo();
   if (y % 2) {
     this.setAttribute("class", `cell ch`);
     array.push(this.id);
@@ -35,7 +35,7 @@ function cellClicked() {
   }
   y++;
   checkUdo();
-  checkRedo();
+//   checkRedo();
 }
 
 function checkUdo() {
@@ -50,13 +50,13 @@ function checkUdo() {
 }
 
 function checkRedo() {
-  if (redoArray.length != 0) {
-    // redoBtn[0].disabled = false;
     redoBtn[0].removeAttribute('disabled');
-  } 
-//   else {
+//   if (redoArray.length != 0) {
+//     // redoBtn[0].disabled = false;
+//     redoBtn[0].removeAttribute('disabled');
+//   } else {
 //     // redoBtn[0].disabled = true;
-//     // redoBtn[0].setAttribute('disabled', 'true');
+//     redoBtn[0].setAttribute('disabled', 'true');
     
 //   }
 }
@@ -74,6 +74,7 @@ function undo() {
 
 function redo() {
   let a = redoArray[0];
+  checkRedo();
   getElId = document.getElementById(a);
   array.push(a);
   a = redoArray[1];
