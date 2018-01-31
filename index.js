@@ -18,12 +18,12 @@ for (let i = 0; i < getEl.length; i++) {
   getEl[i].addEventListener("click", cellClicked, false);
 }
 // setInterval(checkUdo, 100);
- setInterval(checkRedo, 10);
+//  setInterval(checkRedo, 10);
+// console.log(undoBtn);
 
-console.log(undoBtn);
 function cellClicked() {
-  checkUdo();
-  checkRedo();
+  // checkUdo();
+  // checkRedo();
   if (y % 2) {
     this.setAttribute("class", `cell ch`);
     array.push(this.id);
@@ -34,8 +34,8 @@ function cellClicked() {
     array.push(this.id);
   }
   y++;
-  checkUdo();
-  checkRedo();
+  // checkUdo();
+  // checkRedo();
 }
 
 function checkUdo() {
@@ -50,18 +50,7 @@ function checkUdo() {
   }
 }
 
-function checkRedo() {
-    // redoBtn[0].removeAttribute('disabled');
-  if (redoArray.length > 0) {
-    // redoBtn[0].disabled = false;
-    redoBtn[0].removeAttribute('disabled');
-  } 
-  else {
-    redoBtn[0].disabled = true;
-    // redoBtn[0].setAttribute('disabled', 'true');
-    
-  }
-}
+
 
 function undo() {
   checkRedo();
@@ -73,18 +62,18 @@ function undo() {
   array = array.slice(0, -1);
   checkUdo();
   checkRedo();
- 
-  console.log(redoArray);
+  // console.log(redoArray);
   y--;
 }
 
 function redo() {
+  checkRedo();
+  
   let a = redoArray[0];
   getElId = document.getElementById(a);
   array.push(a);
   a = redoArray[1];
   getElId.setAttribute("class", a);
-
   redoArray = [];
   y--;
   checkUdo();
@@ -101,6 +90,8 @@ function restart() {
     del.setAttribute("class", "cell");
   }
   checkUdo();
+  checkRedo();
+  
   array = [];
   redoArray = [];
   y = 1;
@@ -120,6 +111,20 @@ function restart() {
     getEl[i].addEventListener("click", cellClicked, false);
   }
   
+}
+
+
+function checkRedo() {
+  // redoBtn[0].removeAttribute('disabled');
+if (redoArray.length > 0) {
+  // redoBtn[0].disabled = false;
+  redoBtn[0].removeAttribute('disabled');
+} 
+else {
+  redoBtn[0].disabled = true;
+  // redoBtn[0].setAttribute('disabled', 'true');
+  
+}
 }
 
 function test(text) {
