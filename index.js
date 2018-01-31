@@ -18,7 +18,7 @@ for (let i = 0; i < getEl.length; i++) {
   getEl[i].addEventListener("click", cellClicked, false);
 }
 // setInterval(checkUdo, 100);
-// setInterval(checkRedo, 100);
+ setInterval(checkRedo, 10);
 
 console.log(undoBtn);
 function cellClicked() {
