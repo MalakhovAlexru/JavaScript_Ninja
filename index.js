@@ -84,6 +84,7 @@ function redo() {
     // redoArray = redoArray.splice();
         if(redoArray.length == 0) {
     redoBtn[0].disabled = true;
+    undoBtn[0].disabled = true;
           
         }
     // redoBtn[0].disabled = true;
