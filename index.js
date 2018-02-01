@@ -62,7 +62,7 @@ function redo() {
     a = redoArray[1];
     getElId.setAttribute('class', a);
     y = redoArray[2];
-    redoArray.splice();
+    redoArray = redoArray.splice();
     checkUdo();
     checkRedo();
   }
@@ -117,23 +117,22 @@ function checkRedo() {
     
     if (redoArray.length !== 0){
     redoBtn[0].removeAttribute('disabled');
-    // let a = redoArray[0];
-    // let b,c;
-    // b = document.getElementById(a);
-    // c = b.getAttribute("class");
-    // console.log(c);
-    // // if (redoArray.length == 0){
-    // //     redoBtn[0].disabled = true;  
-    // //   }
-    // if (c == "cell"){
-    //   // redoArray.splice(0);
-    //   redoBtn[0].removeAttribute('disabled');
+        // let a = redoArray[0];
+        // let b,c;
+        // b = document.getElementById(a);
+        // c = b.getAttribute("class");
+        // console.log(c);
+        // // if (redoArray.length == 0){
+        // //     redoBtn[0].disabled = true;  
+        // //   }
+        // if (c == "cell"){
+        //   // redoArray.splice(0);
+        //   redoBtn[0].removeAttribute('disabled');
     }
     else {
-      redoBtn[0].disabled = true; 
-      
+      redoBtn[0].disabled = true;       
     }
-  }
+  
   // else console.log('redoArray is zero lenght')
 // }
 // else redoBtn[0].disabled = true; 
