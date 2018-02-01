@@ -72,6 +72,15 @@ function undo() {
   redoBtn[0].removeAttribute('disabled');
 
   y--;
+
+  if(array.length ==0){
+    undoBtn[0].disabled = true; 
+
+  
+  }
+
+
+
   } else{
   console.log ('entered zero lenght array')
   undoBtn[0].disabled = true; 
