@@ -72,9 +72,10 @@ function undo() {
   redoBtn[0].removeAttribute('disabled');
 
   y--;
-  }
+  } else{
   console.log ('entered zero lenght array')
   undoBtn[0].disabled = true; 
+  }
 }
 
 function redo() { 
