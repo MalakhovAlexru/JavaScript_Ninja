@@ -128,13 +128,13 @@ function checkRedo() {
     // if (c == "cell"){
     //   // redoArray.splice(0);
     //   redoBtn[0].removeAttribute('disabled');
-    // }
+    }
     else {
       redoBtn[0].disabled = true; 
       
     }
   }
-  else console.log('redoArray is zero lenght')
+  // else console.log('redoArray is zero lenght')
 // }
 // else redoBtn[0].disabled = true; 
 
