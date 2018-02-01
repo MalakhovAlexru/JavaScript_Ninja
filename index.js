@@ -146,7 +146,7 @@ function test(text) {
   buf = document.body.getElementsByClassName("won-title hidden");
   buf[0].setAttribute("class", "won-title");
   buf = document.getElementsByClassName("won-message");
-  buf[0].innerHTML = text;
+  buf[0].innerHTML = text; 
 }
 
 function removList(){
