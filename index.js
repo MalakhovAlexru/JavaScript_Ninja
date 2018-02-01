@@ -155,18 +155,19 @@ function restart() {
 function checkUdo() {
 
   if(
-    getEl[0].getAttribute("class") !== "cell" &&
-    getEl[1].getAttribute("class") !== "cell" &&
-    getEl[2].getAttribute("class") !== "cell" &&
-    getEl[3].getAttribute("class") !== "cell" &&
-    getEl[4].getAttribute("class") !== "cell" &&
-    getEl[5].getAttribute("class") !== "cell" &&
-    getEl[6].getAttribute("class") !== "cell" &&
-    getEl[7].getAttribute("class") !== "cell" &&
-    getEl[8].getAttribute("class") !== "cell"
+    getEl[0].getAttribute("class") == "cell" &&
+    getEl[1].getAttribute("class") == "cell" &&
+    getEl[2].getAttribute("class") == "cell" &&
+    getEl[3].getAttribute("class") == "cell" &&
+    getEl[4].getAttribute("class") == "cell" &&
+    getEl[5].getAttribute("class") == "cell" &&
+    getEl[6].getAttribute("class") == "cell" &&
+    getEl[7].getAttribute("class") == "cell" &&
+    getEl[8].getAttribute("class") == "cell"
   ){
     undoBtn[0].disabled = true;   
   };
+  
 
 
   if (array.length > 0) {
@@ -217,9 +218,9 @@ function removList(){
       // redoBtn[0].disabled = true;       
       
       // undoBtn[0].removeEventListener("click", undo, false);
-      // undoBtn[0].removeAttribute('disabled');
+      undoBtn[0].removeAttribute('disabled');
       // redoBtn[0].removeEventListener("click", redo, false);
-      // redoBtn[0].removeAttribute('disabled');
+      redoBtn[0].removeAttribute('disabled');
    
 };
 
