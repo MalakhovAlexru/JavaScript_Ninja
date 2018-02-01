@@ -28,7 +28,7 @@ function cellClicked() {
     redoArray2[0] = this.id;
     console.log(y);
     checkUdo();
-    checkRedo();    
+    // checkRedo();    
 
   } else {
     this.setAttribute("class", `cell r`);
@@ -36,7 +36,7 @@ function cellClicked() {
     array.push(this.id);
     redoArray2[0] = this.id;  
     checkUdo();
-    checkRedo();
+    // checkRedo();
 
     }
   y++;
@@ -44,14 +44,15 @@ function cellClicked() {
 
 function undo() {
   let a = array.splice(-1);
+  let b;
   // redoArray2.push(a);
   // redoArray.splice();
   redoArray[0] = a.toString();
   
-  getElId = document.getElementById(a);
-  redoArray[1] = getElId.getAttribute("class");
+  b = document.getElementById(a);
+  redoArray[1] = b.getAttribute("class");
   redoArray[2] = y;
-  getElId.setAttribute("class", `cell`);
+  b.setAttribute("class","cell");
   // array = array.splice(0, -1);
   checkUdo();
   checkRedo();  
@@ -61,14 +62,17 @@ function undo() {
 function redo() { 
   if(redoArray.length !== 0){
     let a = redoArray[0];
-    getElId = document.getElementById(a);
+    let b;
+    b = document.getElementById(a);
     array.push(a);
     a = redoArray[1];
-    getElId.setAttribute('class', a);
+    b.setAttribute('class', a);
     y = redoArray[2];
     redoArray = redoArray.splice();
-    checkUdo();
-    checkRedo();
+         
+    redoBtn[0].disabled = true;
+    
+    
   }
   else {
     console.log ('entered zero lenght array')
@@ -83,8 +87,8 @@ function restart() {
     del = document.getElementById("c-" + i);
     del.setAttribute("class", "cell");
   }
-  array.splice(0,getEl.length);;
-  redoArray.splice(0,3);;
+  array.splice();
+  redoArray.splice();
   y = 1;
   let del;
   del = document.body.getElementsByClassName("won-title");
@@ -102,7 +106,6 @@ function restart() {
 
   checkUdo();
   checkRedo();
-
 }
 
 
@@ -111,9 +114,7 @@ function checkUdo() {
     undoBtn[0].removeAttribute('disabled');
   }
    else {
-    undoBtn[0].disabled = true;
-         
-        
+    undoBtn[0].disabled = true; 
   }
 }
 
@@ -184,8 +185,9 @@ function removList(){
       }
       // checkUdo();
       // checkRedo();
-      undoBtn[0].disabled = true;
-      redoBtn[0].disabled = true;       
+
+      // undoBtn[0].disabled = true;
+      // redoBtn[0].disabled = true;       
       
       // undoBtn[0].removeEventListener("click", undo, false);
       // undoBtn[0].removeAttribute('disabled');
@@ -245,7 +247,6 @@ function endOfGame() {
     getEl[6].setAttribute("class", buff);
     getEl[7].setAttribute("class", buff);
     getEl[8].setAttribute("class", buff);
-    // clearInterval(intervalID);
     return;
   }
   //cols
@@ -263,7 +264,6 @@ function endOfGame() {
     getEl[0].setAttribute("class", buff);
     getEl[3].setAttribute("class", buff);
     getEl[6].setAttribute("class", buff);
-    // clearInterval(intervalID);
     return;
   }
   //col two
@@ -280,7 +280,6 @@ function endOfGame() {
     getEl[1].setAttribute("class", buff);
     getEl[4].setAttribute("class", buff);
     getEl[7].setAttribute("class", buff);
-    // clearInterval(intervalID);
     return;
   }
   //col tree
@@ -297,7 +296,6 @@ function endOfGame() {
     getEl[2].setAttribute("class", buff);
     getEl[5].setAttribute("class", buff);
     getEl[8].setAttribute("class", buff);
-    // clearInterval(intervalID);
     return;
   }
   //diam l-r
@@ -314,7 +312,6 @@ function endOfGame() {
     getEl[6].setAttribute("class", buff);
     getEl[4].setAttribute("class", buff);
     getEl[2].setAttribute("class", buff);
-    // clearInterval(intervalID);
     return;
   }
   //diam r-l
@@ -328,12 +325,9 @@ function endOfGame() {
     else test("Toes won!");
     let buff = getEl[4].getAttribute("class");
     buff = buff + " win diagonal-right";
-
     getEl[0].setAttribute("class", buff);
     getEl[4].setAttribute("class", buff);
     getEl[8].setAttribute("class", buff);
-
-    // clearInterval(intervalID);
     return;
   } else if (
     getEl[0].getAttribute("class") !== "cell" &&
@@ -349,7 +343,6 @@ function endOfGame() {
     removList()
     //draw!
     test("'It's a draw!'");
-    // clearInterval(intervalID);
     return;
   }
 }
