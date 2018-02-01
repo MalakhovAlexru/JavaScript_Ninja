@@ -79,7 +79,9 @@ function redo() {
   }
       
 }
-
+// function helli(){
+//   console.log(hello);
+// }
 function restart() {
 
   for (let i = 0; i < getEl.length; i++) {
@@ -87,8 +89,10 @@ function restart() {
     del = document.getElementById("c-" + i);
     del.setAttribute("class", "cell");
   }
-  array.splice();
-  redoArray.splice();
+  array = array.splice();
+  redoArray = redoArray.splice();
+  redoArray2 = redoArray2.splice();
+  
   y = 1;
   let del;
   del = document.body.getElementsByClassName("won-title");
@@ -103,11 +107,11 @@ function restart() {
   
   undoBtn[0].addEventListener("click", undo, false);
   redoBtn[0].addEventListener("click", redo, false);
+  console.log(array);
 
   checkUdo();
   checkRedo();
 }
-
 
 function checkUdo() {
   if (array.length > 0) {
@@ -119,56 +123,24 @@ function checkUdo() {
 }
 
 function checkRedo() {
-  // if(array.length > 0){
-  //   console.log(redoArray);
-  //   redoBtn[0].removeAttribute('disabled');
-  // }
-      // switch(redoArray){
-      //   case redoArray > 0 :
-      //   {
-      //     redoBtn[0].removeAttribute('disabled');
-      //   }
-      //   case redoArray =
-      // }
-if (redoArray.length > 0){
-    
-    // redoBtn[0].removeAttribute('disabled');
+  
+  if (redoArray.length > 0){   
         let a = redoArray[0];
         let b,c;
         b = document.getElementById(a);
         c = b.getAttribute("class");
-        // console.log(c);
         
         if (c !== "cell" || redoArray[0] !== redoArray2[0]){
           redoBtn[0].disabled = true;
         } else {redoBtn[0].removeAttribute('disabled');}
 
       }
+      else {
+    redoBtn[0].disabled = true;   
 
     }
-  
-//     else {
-//       redoBtn[0].disabled = true;       
-//     }
-
-//     if (redoArray[0] !== redoArray2[0]){
-//       redoBtn[0].disabled = true;   
-//     }
-// } else redoBtn[0].disabled = true;
-  
-  // else console.log('redoArray is zero lenght')
-// }
-// else  
-
-
-// if (redoArray.length == 0){
-//   redoBtn[0].disabled = true;  
-// }
-// if(array.length == 0){
-//   redoBtn[0].disabled = true;
-// }
-// }
-
+  }
+ 
 function test(text) {
   let buf;
   buf = document.body.getElementsByClassName("won-title hidden");
