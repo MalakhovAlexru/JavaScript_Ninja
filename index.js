@@ -116,18 +116,19 @@ function checkRedo() {
   //   console.log(redoArray);
     
     if (redoArray.length !== 0){
-    let a = redoArray[0];
-    let b,c;
-    b = document.getElementById(a);
-    c = b.getAttribute("class");
-    console.log(c);
-    // if (redoArray.length == 0){
-    //     redoBtn[0].disabled = true;  
-    //   }
-    if (c == "cell"){
-      // redoArray.splice(0);
-      redoBtn[0].removeAttribute('disabled');
-    }
+    redoBtn[0].removeAttribute('disabled');
+    // let a = redoArray[0];
+    // let b,c;
+    // b = document.getElementById(a);
+    // c = b.getAttribute("class");
+    // console.log(c);
+    // // if (redoArray.length == 0){
+    // //     redoBtn[0].disabled = true;  
+    // //   }
+    // if (c == "cell"){
+    //   // redoArray.splice(0);
+    //   redoBtn[0].removeAttribute('disabled');
+    // }
     else {
       redoBtn[0].disabled = true; 
       
