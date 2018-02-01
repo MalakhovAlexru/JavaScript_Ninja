@@ -3,6 +3,7 @@ let y = 1;
 let getElId;
 let array = [],
     redoArray = [];
+    redoArray2 = [];
 
 let undoBtn = document.getElementsByClassName("undo-btn btn");
 let restarBtn = document.getElementsByClassName("restart-btn");
@@ -37,28 +38,41 @@ function cellClicked() {
 
 function undo() {
   let a = array.slice(-1);
-  redoArray.splice(0,3);
-  redoArray[0] = a.toString();
+  // redoArray.splice(0,3);
+  redoArray.push(a.toString());
   getElId = document.getElementById(a);
-  redoArray[1] = getElId.getAttribute("class");
-  redoArray[2] = y;
+  redoArray.push(getElId.getAttribute("class"));
+  redoArray.push(y);
   getElId.setAttribute("class", `cell`);
   array = array.slice(0, -1);
   checkUdo();
   checkRedo();  
   y--;
+  console.log(redoArray);
 }
 
-function redo() { 
-  let a = redoArray[0];
+function redo() {
+  console.log("befor reverse " + redoArray);
+  let b = redoArray.splice(-3);
+  b = b.reverse();
+  
+  let a = b.splice(-1);
+  console.log("splice - 1 " + redoArray);
+  
   getElId = document.getElementById(a);
   array.push(a);
-  a = redoArray[1];
+  a = b.splice(-1);
+  console.log("splice - 2 " + redoArray);
+  
   getElId.setAttribute("class", a);
-  y = redoArray[2];
-  redoArray.splice(0,3);
+  y = b.splice(-1);
+  console.log("splice - 3 " + redoArray);
+  
+  // redoArray.splice(-3);
   checkUdo();
   checkRedo();
+  // redoArray = redoArray.reverse();
+
 }
 
 function restart() {
@@ -104,12 +118,12 @@ function checkRedo() {
 if (redoArray.length > 0) {
   redoBtn[0].removeAttribute('disabled');
 } 
-else if (redoArray.length == 0){
+if (redoArray.length == 0){
   redoBtn[0].disabled = true;  
 }
-if(array.length == 0){
-  redoBtn[0].disabled = true;
-}
+// if(array.length == 0){
+//   redoBtn[0].disabled = true;
+// }
 }
 
 function test(text) {
