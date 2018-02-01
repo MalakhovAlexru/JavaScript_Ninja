@@ -2,7 +2,7 @@ let getEl = document.getElementsByClassName("cell");
 let y = 1;
 let getElId;
 let array = [],
-    redoArray = [];
+    redoArray = [],
     redoArray2 = [];
 
 let undoBtn = document.getElementsByClassName("undo-btn btn");
@@ -22,57 +22,54 @@ for (let i = 0; i < getEl.length; i++) {
 function cellClicked() {
  
   if (y % 2) {
+    // redoArray2 = [];
     this.setAttribute("class", `cell ch`);
     array.push(this.id);
     console.log(y);
     checkUdo();
+    checkRedo();
 
   } else {
     this.setAttribute("class", `cell r`);
     console.log(y);
     array.push(this.id);
     checkUdo();
+    checkRedo();
     }
   y++;
   }
 
 function undo() {
-  let a = array.slice(-1);
-  // redoArray.splice(0,3);
-  redoArray.push(a.toString());
+  let a = array.splice(-1);
+  // redoArray2.push(a);
+  // redoArray.splice();
+  redoArray[0] = a.toString();
   getElId = document.getElementById(a);
-  redoArray.push(getElId.getAttribute("class"));
-  redoArray.push(y);
+  redoArray[1] = getElId.getAttribute("class");
+  redoArray[2] = y;
   getElId.setAttribute("class", `cell`);
-  array = array.slice(0, -1);
+  // array = array.splice(0, -1);
   checkUdo();
   checkRedo();  
   y--;
-  console.log(redoArray);
 }
 
-function redo() {
-  console.log("befor reverse " + redoArray);
-  let b = redoArray.splice(-3);
-  b = b.reverse();
-  
-  let a = b.splice(-1);
-  console.log("splice - 1 " + redoArray);
-  
-  getElId = document.getElementById(a);
-  array.push(a);
-  a = b.splice(-1);
-  console.log("splice - 2 " + redoArray);
-  
-  getElId.setAttribute("class", a);
-  y = b.splice(-1);
-  console.log("splice - 3 " + redoArray);
-  
-  // redoArray.splice(-3);
-  checkUdo();
-  checkRedo();
-  // redoArray = redoArray.reverse();
-
+function redo() { 
+  if(redoArray.length !== 0){
+    let a = redoArray[0];
+    getElId = document.getElementById(a);
+    array.push(a);
+    a = redoArray[1];
+    getElId.setAttribute('class', a);
+    y = redoArray[2];
+    redoArray.splice();
+    checkUdo();
+    checkRedo();
+  }
+  else {
+    console.log ('entered zero lenght array')
+  }
+      
 }
 
 function restart() {
@@ -115,12 +112,33 @@ function checkUdo() {
 }
 
 function checkRedo() {
-if (redoArray.length > 0) {
-  redoBtn[0].removeAttribute('disabled');
-} 
-if (redoArray.length == 0){
-  redoBtn[0].disabled = true;  
+  if(array.length > 0){
+    console.log(redoArray);
+    
+    if (redoArray.length !== 0){
+    let a = redoArray[0];
+    let b,c;
+    b = document.getElementById(a);
+    c = b.getAttribute("class");
+    console.log(c);
+    // if (redoArray.length == 0){
+    //     redoBtn[0].disabled = true;  
+    //   }
+    if (c == "cell"){
+      // redoArray.splice(0);
+      redoBtn[0].removeAttribute('disabled');
+    }
+    else {
+      redoBtn[0].disabled = true; 
+      
+    }
+  }
+  else console.log('redoArray is zero lenght')
 }
+
+// if (redoArray.length == 0){
+//   redoBtn[0].disabled = true;  
+// }
 // if(array.length == 0){
 //   redoBtn[0].disabled = true;
 // }
