@@ -104,7 +104,7 @@ function redo() {
     // undoBtn[0].disabled = true;
           
         }
-    redoBtn[0].disabled = true;
+    // redoBtn[0].disabled = true;
     undoBtn[0].removeAttribute("disabled");
     
     
