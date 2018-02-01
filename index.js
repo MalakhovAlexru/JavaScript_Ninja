@@ -114,8 +114,10 @@ function checkUdo() {
 }
 
 function checkRedo() {
-  // if(array.length > 0){
-  //   console.log(redoArray);
+  if(array.length > 0){
+    console.log(redoArray);
+    redoBtn[0].removeAttribute('disabled');
+  }
     
     if (redoArray.length !== 0){
     redoBtn[0].removeAttribute('disabled');
