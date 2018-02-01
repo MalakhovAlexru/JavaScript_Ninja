@@ -122,34 +122,42 @@ function checkRedo() {
   //   console.log(redoArray);
   //   redoBtn[0].removeAttribute('disabled');
   // }
+      // switch(redoArray){
+      //   case redoArray > 0 :
+      //   {
+      //     redoBtn[0].removeAttribute('disabled');
+      //   }
+      //   case redoArray =
+      // }
+if (redoArray.length > 0){
     
-  
-    if (redoArray.length !== 0){
-    redoBtn[0].removeAttribute('disabled');
-
-    
+    // redoBtn[0].removeAttribute('disabled');
         let a = redoArray[0];
         let b,c;
         b = document.getElementById(a);
         c = b.getAttribute("class");
-        console.log(c);
+        // console.log(c);
         
-        if (c !== "cell"){
-          // redoArray.splice(0);
+        if (c !== "cell" || redoArray[0] !== redoArray2[0]){
           redoBtn[0].disabled = true;
-        }
-    }
-    else {
-      redoBtn[0].disabled = true;       
-    }
+        } else {redoBtn[0].removeAttribute('disabled');}
 
-    if (redoArray[0] !== redoArray2[0]){
-      redoBtn[0].disabled = true;   
+      }
+
     }
+  
+//     else {
+//       redoBtn[0].disabled = true;       
+//     }
+
+//     if (redoArray[0] !== redoArray2[0]){
+//       redoBtn[0].disabled = true;   
+//     }
+// } else redoBtn[0].disabled = true;
   
   // else console.log('redoArray is zero lenght')
 // }
-// else redoBtn[0].disabled = true; 
+// else  
 
 
 // if (redoArray.length == 0){
@@ -158,7 +166,7 @@ function checkRedo() {
 // if(array.length == 0){
 //   redoBtn[0].disabled = true;
 // }
-}
+// }
 
 function test(text) {
   let buf;
