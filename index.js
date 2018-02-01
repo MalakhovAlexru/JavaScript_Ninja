@@ -28,7 +28,7 @@ function cellClicked() {
     redoArray2[0] = this.id;
     console.log(y);
 
-    undoBtn[0].removeAttribute('disabled');
+    undoBtn[0].removeAttribute("disabled");
     
     // checkUdo();
     // checkRedo();    
@@ -40,7 +40,7 @@ function cellClicked() {
     redoArray2[0] = this.id;  
     checkUdo();
 
-    undoBtn[0].removeAttribute('disabled');
+    undoBtn[0].removeAttribute("disabled");
     
     // checkRedo();
 
@@ -66,9 +66,9 @@ function undo() {
   // array = array.splice(0, -1);
   // checkRedo(); 
   
-  // undoBtn[0].removeAttribute('disabled');
+  // undoBtn[0].removeAttribute("disabled");
   
-  redoBtn[0].removeAttribute('disabled');
+  redoBtn[0].removeAttribute("disabled");
 
   y--;
 
@@ -78,7 +78,7 @@ function undo() {
 
 
   } else{
-  console.log ('entered zero lenght array')
+  console.log ("entered zero lenght array")
   undoBtn[0].disabled = true; 
   }
 };
@@ -104,12 +104,14 @@ function redo() {
     // undoBtn[0].disabled = true;
           
         }
-    // redoBtn[0].disabled = true;
+    redoBtn[0].disabled = true;
+    undoBtn[0].removeAttribute("disabled");
+    
     
     
   }
   else {
-    console.log ('entered zero lenght array')
+    console.log ("entered zero lenght array")
     redoBtn[0].disabled = true;
     
   }
@@ -171,7 +173,7 @@ function checkUdo() {
 
 
   if (array.length > 0) {
-    undoBtn[0].removeAttribute('disabled');
+    undoBtn[0].removeAttribute("disabled");
   }
    else {
     undoBtn[0].disabled = true; 
@@ -188,7 +190,7 @@ function checkRedo() {
         
         if (c !== "cell" || redoArray[0] !== redoArray2[0]){
           redoBtn[0].disabled = true;
-        } else {redoBtn[0].removeAttribute('disabled');}
+        } else {redoBtn[0].removeAttribute("disabled");}
 
       }
       else {
@@ -218,9 +220,9 @@ function removList(){
       // redoBtn[0].disabled = true;       
       
       // undoBtn[0].removeEventListener("click", undo, false);
-      undoBtn[0].removeAttribute('disabled');
+      undoBtn[0].removeAttribute("disabled");
       // redoBtn[0].removeEventListener("click", redo, false);
-      redoBtn[0].removeAttribute('disabled');
+      redoBtn[0].removeAttribute("disabled");
    
 };
 
@@ -370,7 +372,7 @@ function endOfGame() {
   ) {
     removList()
     //draw!
-    test("'It's a draw!'");
+    test("'It's a draw!");
     return;
   }
 }
