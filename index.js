@@ -25,16 +25,19 @@ function cellClicked() {
     // redoArray2 = [];
     this.setAttribute("class", `cell ch`);
     array.push(this.id);
+    redoArray2[0] = this.id;
     console.log(y);
     checkUdo();
-    checkRedo();
+    checkRedo();    
 
   } else {
     this.setAttribute("class", `cell r`);
     console.log(y);
     array.push(this.id);
+    redoArray2[0] = this.id;  
     checkUdo();
     checkRedo();
+
     }
   y++;
   }
@@ -44,6 +47,7 @@ function undo() {
   // redoArray2.push(a);
   // redoArray.splice();
   redoArray[0] = a.toString();
+  
   getElId = document.getElementById(a);
   redoArray[1] = getElId.getAttribute("class");
   redoArray[2] = y;
@@ -114,11 +118,12 @@ function checkUdo() {
 }
 
 function checkRedo() {
-  if(array.length > 0){
-    console.log(redoArray);
-    redoBtn[0].removeAttribute('disabled');
-  }
+  // if(array.length > 0){
+  //   console.log(redoArray);
+  //   redoBtn[0].removeAttribute('disabled');
+  // }
     
+  
     if (redoArray.length !== 0){
     redoBtn[0].removeAttribute('disabled');
 
@@ -136,6 +141,10 @@ function checkRedo() {
     }
     else {
       redoBtn[0].disabled = true;       
+    }
+
+    if (redoArray[0] !== redoArray2[0]){
+      redoBtn[0].disabled = true;   
     }
   
   // else console.log('redoArray is zero lenght')
@@ -171,9 +180,9 @@ function removList(){
       redoBtn[0].disabled = true;       
       
       // undoBtn[0].removeEventListener("click", undo, false);
-      undoBtn[0].removeAttribute('disabled');
+      // undoBtn[0].removeAttribute('disabled');
       // redoBtn[0].removeEventListener("click", redo, false);
-      redoBtn[0].removeAttribute('disabled');
+      // redoBtn[0].removeAttribute('disabled');
    
 };
 
