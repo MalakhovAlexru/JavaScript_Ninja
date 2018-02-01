@@ -27,7 +27,10 @@ function cellClicked() {
     array.push(this.id);
     redoArray2[0] = this.id;
     console.log(y);
-    checkUdo();
+
+    undoBtn[0].removeAttribute('disabled');
+    
+    // checkUdo();
     // checkRedo();    
 
   } else {
@@ -36,6 +39,9 @@ function cellClicked() {
     array.push(this.id);
     redoArray2[0] = this.id;  
     checkUdo();
+
+    undoBtn[0].removeAttribute('disabled');
+    
     // checkRedo();
 
     }
@@ -43,6 +49,7 @@ function cellClicked() {
   }
 
 function undo() {
+  if(array.length !==0){
   let a = array.splice(-1);
   let b;
   // redoArray[0] = a.toString();
@@ -59,11 +66,15 @@ function undo() {
   // array = array.splice(0, -1);
   // checkUdo();
   // checkRedo(); 
-  undoBtn[0].removeAttribute('disabled');
+  
+  // undoBtn[0].removeAttribute('disabled');
   
   redoBtn[0].removeAttribute('disabled');
 
   y--;
+  }
+  console.log ('entered zero lenght array')
+  undoBtn[0].disabled = true; 
 }
 
 function redo() { 
@@ -84,7 +95,7 @@ function redo() {
     // redoArray = redoArray.splice();
         if(redoArray.length == 0) {
     redoBtn[0].disabled = true;
-    undoBtn[0].disabled = true;
+    // undoBtn[0].disabled = true;
           
         }
     // redoBtn[0].disabled = true;
