@@ -17,7 +17,7 @@ redoBtn[0].addEventListener("click", redo, false);
 
 for (let i = 0; i < getEl.length; i++) {
   getEl[i].addEventListener("click", cellClicked, false);
-}
+};
 
 function cellClicked() {
  
@@ -46,25 +46,24 @@ function cellClicked() {
 
     }
   y++;
-  }
+  };
 
 function undo() {
   if(array.length !==0){
   let a = array.splice(-1);
   let b;
-  // redoArray[0] = a.toString();
+  redoArray[0] = a.toString();
 
-  redoArray.push(a.toString());
+  // redoArray.push(a.toString());
 
   b = document.getElementById(a);
-  // redoArray[1] = b.getAttribute("class"); 
-  redoArray.push(b.getAttribute("class"));
-  // redoArray[2] = y;
-  redoArray.push(y);
+  redoArray[1] = b.getAttribute("class"); 
+  // redoArray.push(b.getAttribute("class"));
+  redoArray[2] = y;
+  // redoArray.push(y);
   
   b.setAttribute("class","cell");
   // array = array.splice(0, -1);
-  // checkUdo();
   // checkRedo(); 
   
   // undoBtn[0].removeAttribute('disabled');
@@ -73,11 +72,8 @@ function undo() {
 
   y--;
 
-  if(array.length ==0){
-    undoBtn[0].disabled = true; 
-
   
-  }
+  checkUdo();
 
 
 
@@ -85,23 +81,23 @@ function undo() {
   console.log ('entered zero lenght array')
   undoBtn[0].disabled = true; 
   }
-}
+};
 
 function redo() { 
   if(redoArray.length !== 0){
 
-    let bufArray = redoArray.splice(-3);
-    bufArray = bufArray.reverse();
+    // let bufArray = redoArray.splice(-3);
+    // bufArray = bufArray.reverse();
 
 
 
-    let a = bufArray.splice(-1);
+    let a = redoArray[0];
     let b;
     b = document.getElementById(a);
     array.push(a);
-    a = bufArray.splice(-1);
+    a = redoArray[1];
     b.setAttribute("class", a);
-    y = bufArray.splice(-1);
+    y = redoArray[2];
     // redoArray = redoArray.splice();
         if(redoArray.length == 0) {
     redoBtn[0].disabled = true;
@@ -118,7 +114,7 @@ function redo() {
     
   }
       
-}
+};
 // function helli(){
 //   console.log(hello);
 // }
@@ -157,6 +153,22 @@ function restart() {
 }
 
 function checkUdo() {
+
+  if(
+    getEl[0].getAttribute("class") !== "cell" &&
+    getEl[1].getAttribute("class") !== "cell" &&
+    getEl[2].getAttribute("class") !== "cell" &&
+    getEl[3].getAttribute("class") !== "cell" &&
+    getEl[4].getAttribute("class") !== "cell" &&
+    getEl[5].getAttribute("class") !== "cell" &&
+    getEl[6].getAttribute("class") !== "cell" &&
+    getEl[7].getAttribute("class") !== "cell" &&
+    getEl[8].getAttribute("class") !== "cell"
+  ){
+    undoBtn[0].disabled = true;   
+  };
+
+
   if (array.length > 0) {
     undoBtn[0].removeAttribute('disabled');
   }
