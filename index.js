@@ -104,8 +104,11 @@ function checkRedo() {
 if (redoArray.length > 0) {
   redoBtn[0].removeAttribute('disabled');
 } 
-else if (redoArray.length = 0 || array.length == 0){
+else if (redoArray.length == 0){
   redoBtn[0].disabled = true;  
+}
+if(array.length == 0){
+  redoBtn[0].disabled = true;
 }
 }
 
