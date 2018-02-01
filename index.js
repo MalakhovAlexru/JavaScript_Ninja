@@ -135,6 +135,8 @@ function checkRedo() {
   }
   else console.log('redoArray is zero lenght')
 }
+else redoBtn[0].disabled = true; 
+
 
 // if (redoArray.length == 0){
 //   redoBtn[0].disabled = true;  
