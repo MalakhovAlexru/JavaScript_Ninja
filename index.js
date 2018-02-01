@@ -45,37 +45,55 @@ function cellClicked() {
 function undo() {
   let a = array.splice(-1);
   let b;
-  // redoArray2.push(a);
-  // redoArray.splice();
-  redoArray[0] = a.toString();
-  
+  // redoArray[0] = a.toString();
+
+  redoArray.push(a.toString());
+
   b = document.getElementById(a);
-  redoArray[1] = b.getAttribute("class");
-  redoArray[2] = y;
+  // redoArray[1] = b.getAttribute("class"); 
+  redoArray.push(b.getAttribute("class"));
+  // redoArray[2] = y;
+  redoArray.push(y);
+  
   b.setAttribute("class","cell");
   // array = array.splice(0, -1);
-  checkUdo();
-  checkRedo();  
+  // checkUdo();
+  // checkRedo(); 
+  undoBtn[0].removeAttribute('disabled');
+  
+  redoBtn[0].removeAttribute('disabled');
+
   y--;
 }
 
 function redo() { 
   if(redoArray.length !== 0){
-    let a = redoArray[0];
+
+    let bufArray = redoArray.splice(-3);
+    bufArray = bufArray.reverse();
+
+
+
+    let a = bufArray.splice(-1);
     let b;
     b = document.getElementById(a);
     array.push(a);
-    a = redoArray[1];
-    b.setAttribute('class', a);
-    y = redoArray[2];
-    redoArray = redoArray.splice();
-         
+    a = bufArray.splice(-1);
+    b.setAttribute("class", a);
+    y = bufArray.splice(-1);
+    // redoArray = redoArray.splice();
+        if(redoArray.length == 0) {
     redoBtn[0].disabled = true;
+          
+        }
+    // redoBtn[0].disabled = true;
     
     
   }
   else {
     console.log ('entered zero lenght array')
+    redoBtn[0].disabled = true;
+    
   }
       
 }
@@ -109,8 +127,11 @@ function restart() {
   redoBtn[0].addEventListener("click", redo, false);
   console.log(array);
 
-  checkUdo();
-  checkRedo();
+  // checkUdo();
+  // checkRedo();
+  undoBtn[0].disabled = true;  
+  redoBtn[0].disabled = true;   
+  
 }
 
 function checkUdo() {
