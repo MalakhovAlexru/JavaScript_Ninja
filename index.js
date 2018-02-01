@@ -112,8 +112,8 @@ function checkUdo() {
 }
 
 function checkRedo() {
-  if(array.length > 0){
-    console.log(redoArray);
+  // if(array.length > 0){
+  //   console.log(redoArray);
     
     if (redoArray.length !== 0){
     let a = redoArray[0];
@@ -134,8 +134,8 @@ function checkRedo() {
     }
   }
   else console.log('redoArray is zero lenght')
-}
-else redoBtn[0].disabled = true; 
+// }
+// else redoBtn[0].disabled = true; 
 
 
 // if (redoArray.length == 0){
