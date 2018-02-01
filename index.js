@@ -107,7 +107,9 @@ function checkUdo() {
     undoBtn[0].removeAttribute('disabled');
   }
    else {
-    undoBtn[0].disabled = true;    
+    undoBtn[0].disabled = true;
+         
+        
   }
 }
 
@@ -162,12 +164,15 @@ function removList(){
       }
       checkUdo();
       checkRedo();
+      undoBtn[0].disabled = true;
+      redoBtn[0].disabled = true;       
+      
       undoBtn[0].removeEventListener("click", undo, false);
       redoBtn[0].removeEventListener("click", redo, false);
    
 };
 
-intervalID = setInterval(endOfGame, 50);
+intervalID = setInterval(endOfGame, 1);
 
 function endOfGame() {
   //first line
