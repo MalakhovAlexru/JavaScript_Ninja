@@ -189,8 +189,8 @@ function removList(){
     for (let i = 0; i < getEl.length; i++) {
         getEl[i].removeEventListener("click", cellClicked, false);
       }
-      checkUdo();
-      checkRedo();
+      // checkUdo();
+      // checkRedo();
 
       // undoBtn[0].disabled = true;
       // redoBtn[0].disabled = true;       
