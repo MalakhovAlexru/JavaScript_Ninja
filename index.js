@@ -119,17 +119,18 @@ function checkRedo() {
     
     if (redoArray.length !== 0){
     redoBtn[0].removeAttribute('disabled');
-        // let a = redoArray[0];
-        // let b,c;
-        // b = document.getElementById(a);
-        // c = b.getAttribute("class");
-        // console.log(c);
-        // // if (redoArray.length == 0){
-        // //     redoBtn[0].disabled = true;  
-        // //   }
-        // if (c == "cell"){
-        //   // redoArray.splice(0);
-        //   redoBtn[0].removeAttribute('disabled');
+
+    
+        let a = redoArray[0];
+        let b,c;
+        b = document.getElementById(a);
+        c = b.getAttribute("class");
+        console.log(c);
+        
+        if (c !== "cell"){
+          // redoArray.splice(0);
+          redoBtn[0].disabled = true;
+        }
     }
     else {
       redoBtn[0].disabled = true;       
@@ -162,8 +163,8 @@ function removList(){
     for (let i = 0; i < getEl.length; i++) {
         getEl[i].removeEventListener("click", cellClicked, false);
       }
-      checkUdo();
-      checkRedo();
+      // checkUdo();
+      // checkRedo();
       undoBtn[0].disabled = true;
       redoBtn[0].disabled = true;       
       
