@@ -202,7 +202,7 @@ function checkUdo() {
 
 function checkRedo() {
   
-  if (redoArray.length > 0){   
+  // if (redoArray.length > 0){   
         let a = redoArray[0];
         let b,c;
         b = document.getElementById(a);
@@ -213,11 +213,11 @@ function checkRedo() {
         } else {redoBtn[0].removeAttribute("disabled");}
 
       }
-      else {
-    redoBtn[0].disabled = true;   
+    //   else {
+    // redoBtn[0].disabled = true;   
 
-    }
-  }
+    // }
+  // }
  
 function test(text) {
   let buf;
@@ -240,9 +240,9 @@ function removList(){
       // redoBtn[0].disabled = true;       
       
       undoBtn[0].removeEventListener("click", undo, false);
-      undoBtn[0].removeAttribute("disabled");
+      // undoBtn[0].removeAttribute("disabled");
       redoBtn[0].removeEventListener("click", redo, false);
-      redoBtn[0].removeAttribute("disabled");
+      // redoBtn[0].removeAttribute("disabled");
    
 };
 
