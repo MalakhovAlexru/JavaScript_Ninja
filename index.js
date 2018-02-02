@@ -26,8 +26,15 @@ function cellClicked() {
     array.push(this.id);
     // array2.push("cell ch");
     redoArray2[0] = this.id;
-    array2[0] = "cell ch";
+    array2[0] = "cell ch";    
     undoBtn[0].removeAttribute("disabled");
+     if(this.id == array2[1]){
+    redoBtn[0].disabled = true;
+       
+     }
+
+    array2[1] = this.id;
+     
     
     // console.log(y);
   } else {
@@ -40,8 +47,12 @@ function cellClicked() {
     redoArray2[0] = this.id;
     array2[0] = "cell ch";
     // console.log(y);
-
     undoBtn[0].removeAttribute("disabled");
+     if(this.id == array2[1]){
+    redoBtn[0].disabled = true;
+       
+     }
+     array2[1] = this.id;
     
     // checkUdo();
     // checkRedo();    
@@ -53,9 +64,12 @@ function cellClicked() {
     // array2.push("cell r");  
     redoArray2[0] = this.id;
     array2[0] = "cell r";  
-    checkUdo();
-
     undoBtn[0].removeAttribute("disabled");
+     if(this.id == array2[1]){
+    redoBtn[0].disabled = true;
+       
+     }
+     array2[1] = this.id;
     
     // checkRedo();
 
@@ -88,7 +102,11 @@ function undo() {
   redoBtn[0].removeAttribute("disabled");
 
   y--;
-
+    if(array2[0] == "cell ch"){
+      array2[0] = "cell r";
+    } else {
+      array2[0] = "cell ch";
+    };
   
   checkUdo();
 
