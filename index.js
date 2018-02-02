@@ -134,7 +134,7 @@ function redo() {
     b.setAttribute("class", a);
     y = redoArray[2];
     // redoArray = redoArray.splice();
-    redoBtn[0].disabled = true;
+    // redoBtn[0].disabled = true;
     
     //     if(redoArray.length == 0) {
     // redoBtn[0].disabled = true;
