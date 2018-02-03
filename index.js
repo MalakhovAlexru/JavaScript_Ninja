@@ -109,6 +109,10 @@ function undo() {
     };
   
   // checkUdo();
+  if (array.length ==0){
+  undoBtn[0].disabled = true; 
+    
+  }
 
 
 
