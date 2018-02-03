@@ -55,7 +55,10 @@ function cellClicked() {
      array2[1] = this.id;
     
     // checkUdo();
-    // checkRedo();    
+    // checkRedo(); 
+    redoArray = redoArray.splice();  
+    redoBtn[0].disabled = true;
+     
 
   } else {
     this.setAttribute("class", "cell r");
@@ -72,7 +75,9 @@ function cellClicked() {
      array2[1] = this.id;
     
     // checkRedo();
-
+    redoArray = redoArray.splice();
+    redoBtn[0].disabled = true;
+    
     }
   y++;
   };
