@@ -29,7 +29,7 @@ function cellClicked() {
     array2[0] = "cell ch";    
     undoBtn[0].removeAttribute("disabled");
     //  if(this.id == array2[1]){
-    redoBtn[0].disabled = true;
+    // redoBtn[0].disabled = true;
        
     //  }
 
@@ -49,7 +49,7 @@ function cellClicked() {
     // console.log(y);
     undoBtn[0].removeAttribute("disabled");
     //  if(this.id == array2[1]){
-    redoBtn[0].disabled = true;
+    // redoBtn[0].disabled = true;
        
     //  }
      array2[1] = this.id;
@@ -66,7 +66,7 @@ function cellClicked() {
     array2[0] = "cell r";  
     undoBtn[0].removeAttribute("disabled");
     //  if(this.id == array2[1]){
-    redoBtn[0].disabled = true;
+    // redoBtn[0].disabled = true;
        
     //  }
      array2[1] = this.id;
@@ -83,15 +83,15 @@ function undo() {
   let a = array.splice(-1);
   
   let b;
-  redoArray[0] = a.toString();
+  // redoArray[0] = a.toString();
 
-  // redoArray.push(a.toString());
+  redoArray.push(a.toString());
 
   b = document.getElementById(a);
-  redoArray[1] = b.getAttribute("class"); 
-  // redoArray.push(b.getAttribute("class"));
-  redoArray[2] = y;
-  // redoArray.push(y);
+  // redoArray[1] = b.getAttribute("class"); 
+  redoArray.push(b.getAttribute("class"));
+  // redoArray[2] = y;
+  redoArray.push(y);
   
   b.setAttribute("class","cell");
   // array = array.splice(0, -1);
@@ -124,27 +124,31 @@ function undo() {
 
 function redo() { 
   if(redoArray.length !== 0){
+console.log(redoArray);
+    let bufArray = redoArray.splice(-3);
+    bufArray = bufArray.reverse();
 
-    // let bufArray = redoArray.splice(-3);
-    // bufArray = bufArray.reverse();
 
 
-
-    let a = redoArray[0];
+    // let a = redoArray[0];
+    let a = bufArray.splice(-1);
+    
     let b;
     b = document.getElementById(a);
     array.push(a);
-    a = redoArray[1];
+    // a = redoArray[1];
+    a = bufArray.splice(-1);
     b.setAttribute("class", a);
-    y = redoArray[2];
-    redoArray = redoArray.splice();
-    redoBtn[0].disabled = true;
-    
-    //     if(redoArray.length == 0) {
+    // y = redoArray[2];
+    y = bufArray.splice(-1);
+    // redoArray = redoArray.splice();
     // redoBtn[0].disabled = true;
-    // // undoBtn[0].disabled = true;
+    
+        if(redoArray.length == 0) {
+    redoBtn[0].disabled = true;
+    // undoBtn[0].disabled = true;
           
-    //     }
+        }
     // redoBtn[0].disabled = true;
     undoBtn[0].removeAttribute("disabled");
     
@@ -157,12 +161,12 @@ function redo() {
     
   }
 
-  if (array.length > 0) {
-    undoBtn[0].removeAttribute("disabled");
-  }
-   else {
-    undoBtn[0].disabled = true; 
-  }
+  // if (array.length > 0) {
+  //   undoBtn[0].removeAttribute("disabled");
+  // }
+  //  else {
+  //   undoBtn[0].disabled = true; 
+  // }
 
       
 };
