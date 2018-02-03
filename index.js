@@ -260,7 +260,7 @@ function removList(){
       undoBtn[0].removeEventListener("click", undo, false);
       undoBtn[0].removeAttribute("disabled");
       redoBtn[0].removeEventListener("click", redo, false);
-      redoBtn[0].removeAttribute("disabled");
+      // redoBtn[0].removeAttribute("disabled");
    
 };
 
