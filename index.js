@@ -108,7 +108,7 @@ function undo() {
       array2[0] = "cell ch";
     };
   
-  checkUdo();
+  // checkUdo();
 
 
 
@@ -152,6 +152,14 @@ function redo() {
     redoBtn[0].disabled = true;
     
   }
+
+  if (array.length > 0) {
+    undoBtn[0].removeAttribute("disabled");
+  }
+   else {
+    undoBtn[0].disabled = true; 
+  }
+
       
 };
 // function helli(){
